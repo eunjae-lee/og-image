@@ -7,10 +7,10 @@ const twOptions = { folder: "svg", ext: ".svg" };
 const emojify = (text: string) => twemoji.parse(text, twOptions);
 
 const rglr = readFileSync(
-  `${__dirname}/../_fonts/NotoSansKR-Medium.otf`
+  `${__dirname}/../_fonts/NotoSansKR-Medium.woff2`
 ).toString("base64");
 const bold = readFileSync(
-  `${__dirname}/../_fonts/NotoSansKR-Black.otf`
+  `${__dirname}/../_fonts/NotoSansKR-Black.woff2`
 ).toString("base64");
 const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString(
   "base64"
@@ -31,14 +31,14 @@ function getCss(theme: string, fontSize: string) {
         font-family: 'Noto Sans KR';
         font-style:  normal;
         font-weight: 600;
-        src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('opentype');
+        src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
     }
 
     @font-face {
         font-family: 'Noto Sans KR';
         font-style:  normal;
         font-weight: 900;
-        src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('opentype');
+        src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
     }
 
     @font-face {
