@@ -12,6 +12,9 @@ interface Options {
 }
 
 export async function getOptions(isDev: boolean) {
+    await chrome.font(`https://og-image.eunjae.dev/NotoSansKR-Black.otf`);
+    await chrome.font(`https://og-image.eunjae.dev/NotoSansKR-Medium.otf`);
+
     let options: Options;
     if (isDev) {
         options = {
