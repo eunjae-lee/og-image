@@ -10,7 +10,7 @@ const ALLOWED_CUSTOM_IMAGE_HOSTS = [
 export function parseRequest(req: IncomingMessage) {
   console.log("HTTP " + req.url);
   const { pathname, query } = parse(req.url || "/", true);
-  const { fontSize, images, widths, heights, theme, md } = query || {};
+  const { fontSize, images, widths, heights, theme, md, extra } = query || {};
 
   if (Array.isArray(fontSize)) {
     throw new Error("Expected a single fontSize");
@@ -34,12 +34,13 @@ export function parseRequest(req: IncomingMessage) {
   const parsedRequest: ParsedRequest = {
     fileType: extension === "jpeg" ? extension : "png",
     text: decodeURIComponent(text),
-    theme: theme === "dark" ? "dark" : "light",
+    theme: theme as string,
     md: md === "1" || md === "true",
     fontSize: fontSize || "96px",
     images: getArray(images),
     widths: getArray(widths),
     heights: getArray(heights),
+    extra,
   };
   parsedRequest.images = getDefaultImages(
     parsedRequest.images,

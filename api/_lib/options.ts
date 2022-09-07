@@ -1,33 +1,35 @@
-import chrome from 'chrome-aws-lambda';
-const exePath = process.platform === 'win32'
-? 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
-: process.platform === 'linux'
-? '/usr/bin/google-chrome'
-: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+// https://github.com/akngs/noto-kr-vf-distilled
+
+import chrome from "chrome-aws-lambda";
+const exePath =
+  process.platform === "win32"
+    ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+    : process.platform === "linux"
+    ? "/usr/bin/google-chrome"
+    : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 interface Options {
-    args: string[];
-    executablePath: string;
-    headless: boolean;
+  args: string[];
+  executablePath: string;
+  headless: boolean;
 }
 
 export async function getOptions(isDev: boolean) {
-    await chrome.font(`https://og-image.eunjae.dev/NotoSansKR-Black.otf`);
-    await chrome.font(`https://og-image.eunjae.dev/NotoSansKR-Medium.otf`);
+  await chrome.font(`https://og-image.eunjae.dev/NotoSansKR-VF-distilled.otf`);
 
-    let options: Options;
-    if (isDev) {
-        options = {
-            args: [],
-            executablePath: exePath,
-            headless: true
-        };
-    } else {
-        options = {
-            args: chrome.args,
-            executablePath: await chrome.executablePath,
-            headless: chrome.headless,
-        };
-    }
-    return options;
+  let options: Options;
+  if (isDev) {
+    options = {
+      args: [],
+      executablePath: exePath,
+      headless: true,
+    };
+  } else {
+    options = {
+      args: chrome.args,
+      executablePath: await chrome.executablePath,
+      headless: chrome.headless,
+    };
+  }
+  return options;
 }
