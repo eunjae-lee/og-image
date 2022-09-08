@@ -139,6 +139,26 @@ function getNormalHtml(parsedReq: ParsedRequest) {
 }
 
 function getTwitChatHtml(parsedReq: ParsedRequest) {
+  const bgColors = [
+    "#991b1b",
+    "#9a3412",
+    "#92400e",
+    "#854d0e",
+    "#3f6212",
+    "#166534",
+    "#065f46",
+    "#115e59",
+    "#155e75",
+    "#075985",
+    "#1e40af",
+    "#3730a3",
+    "#5b21b6",
+    "#6b21a8",
+    "#86198f",
+    "#9d174d",
+    "#9f1239",
+  ];
+  const bgColor = bgColors[Math.floor(Math.random() * bgColors.length)];
   const { extra } = parsedReq;
   const { lang, picture, full_name, title } = JSON.parse(extra);
   return `<!DOCTYPE html>
@@ -173,7 +193,7 @@ function getTwitChatHtml(parsedReq: ParsedRequest) {
           width: 2048px;
           height: 1170px;
           padding: 128px;
-          background-color: #019ef7;
+          background-color: ${bgColor};
           color: white;
           text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
           position: relative;
