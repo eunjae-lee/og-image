@@ -218,6 +218,10 @@ function getTwitChatHtml(parsedReq: ParsedRequest) {
           line-height: 1.8em;
           font-weight: bold;
           word-break: keep-all;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
         .join {
           position: absolute;
