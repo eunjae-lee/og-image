@@ -217,10 +217,11 @@ function getTwitChatHtml(parsedReq: ParsedRequest) {
           font-size: 128px;
           line-height: 1.8em;
           font-weight: bold;
+          word-break: keep-all;
         }
         .join {
           position: absolute;
-          bottom: 88px;
+          bottom: 96px;
           display: flex;
           justify-content: center;
         }
