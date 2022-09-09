@@ -221,7 +221,7 @@ function getTwitChatHtml(parsedReq: ParsedRequest) {
         }
         .join {
           position: absolute;
-          bottom: 96px;
+          bottom: 128px;
           display: flex;
           justify-content: center;
         }
